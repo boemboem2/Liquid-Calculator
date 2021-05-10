@@ -1,0 +1,89 @@
+﻿<header class="entry-header">
+<h1 class="entry-title">Liquid calculator</h1> </header>
+<div class="entry-content">
+<p>Welkom bij de liquid calculator. Bereken online de gewenste smaak- en nicotinesterkte.</p>
+<p><script type="text/javascript">
+function liquidcalculator() {
+var amount = parseFloat(jQuery(".liquidcalculator #amount").val());
+var nstrength = parseFloat(jQuery(".liquidcalculator #nstrength").val());
+var nshotstrength = parseFloat(jQuery(".liquidcalculator #nshotstrength").val());
+var aroma = parseFloat(jQuery(".liquidcalculator #aroma").val());
+var resultbase = 0;
+var resultnshot = 0;
+var resultaroma = 0;
+var a = (amount / 100.0) * aroma;
+resultbase = amount - a;
+resultaroma = a;
+if (nshotstrength > 0 && nstrength > 0) {
+var b = ((nstrength * 100) / nshotstrength) / 100;
+resultnshot = resultbase * b;
+resultbase = resultbase - resultnshot;
+}
+var Options = {maximumFractionDigits: 2};
+jQuery(".liquidcalculator #nshotstrength2").text(nshotstrength.toLocaleString("de-DE",
+Options));
+jQuery(".liquidcalculator #resultbase").text(resultbase.toLocaleString("de-DE", Options));
+jQuery(".liquidcalculator #resultnshot").text(resultnshot.toLocaleString("de-DE", Options));
+jQuery(".liquidcalculator #resultaroma").text(resultaroma.toLocaleString("de-DE", Options));
+}
+</script>
+<style>
+@media(max-width: 640px){
+td {
+display: block;
+}
+}
+</style>
+<div class="liquidcalculator">
+<h3><strong>Hoeveelheid</strong></h3>
+<table class="table-input">
+<tbody>
+<tr class="odd">
+<td>Hoeveelheid gewenste liquid</td>
+<td><input class="lrechner" type="number" name="amount" id="amount" value="100"> ml</td>
+</tr>
+<tr class="even">
+<td>Gewenste nicotine sterkte</td>
+<td><input class="lrechner" type="number" name="nstrength" id="nstrength" value="3">
+mg</td>
+</tr>
+<tr class="odd">
+<td>Nicotine booster (e-base)</td>
+<td><input class="lrechner" type="number" name="nshotstrength" id="nshotstrength"
+value="20"> mg/ml</td>
+</tr>
+<tr class="even">
+
+<td>Hoeveelheid aroma</td>
+<td><input class="lrechner" type="number" name="aroma" id="aroma" value="0"> %</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td><button class="lrbutton" name="btncalculate"
+onclick="liquidcalculator()">Berekenen</button></td>
+</tr>
+</tbody>
+</table>
+<br><br>
+<h3><strong>Het recept</strong></h3>
+<table class="table-output">
+<tbody>
+<tr class="odd">
+<td>Base / smaakloos</td>
+<td><span id="resultbase">85</span> ml</td>
+</tr>
+<tr class="even">
+<td>Nicotine sterkte <span id="nshotstrength2">20</span> mg/ml</td>
+<td><span id="resultnshot">15</span> ml</td>
+</tr>
+<tr class="odd">
+<td>Aroma</td>
+<td><span id="resultaroma">0</span> ml</td>
+</tr>
+</tbody>
+</table>
+<br><br>
+<div class="blub">De online liquid calculator is zonder garantie. Copyright © Vaping 24-7</div>
+</div>
+<br />
+<br />
